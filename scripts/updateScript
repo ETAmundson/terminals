@@ -1,0 +1,71 @@
+#!/bin/bash
+
+#tell bash to quit the script if there's an error
+
+set -e
+
+update() {
+
+  echo "Starting apt update................................................................................"
+  sudo apt update
+
+  echo "Starting apt dist-upgrade.........................................................................."
+  sudo apt dist-upgrade
+}
+
+clean() {
+  echo "Starting apt autoremove............................................................................"
+  sudo apt autoremove
+  
+  echo "Starting apt autoclean............................................................................."
+  sudo apt autoclean
+}
+
+leave() {
+echo "===================================================================================================="
+echo "||||||||||||||||||||||||||||||||||||      Update Complete      |||||||||||||||||||||||||||||||||||||"
+echo "===================================================================================================="
+
+exit
+}
+
+updateScript-help() {
+
+cat << _EOF_
+
+updateScript is a tool that automates updating commands for Debian based distributions.
+
+Commands:
+ $ updateScript          ==============> full system update (apt update + apt dist-upgrade)
+ 
+ $ updateScript --clean  ==============> full system update and removing unused packages (apt autoremove + apt autoclean)
+
+ $ updateScript --help   ==============> Shows this screen
+
+_EOF_
+
+ }
+
+ #Execution
+ echo "updateScript -- Debian Update script"
+
+ # Update and clean
+
+if [ "$1" == "--clean" ]; then
+     update
+     clean
+     leave
+fi
+
+if [ "$1" == "--help" ]; then
+     updateScript-help
+     exit
+fi
+
+if [ -n "$1" ]; then
+     echo "updatScript Error: Invalid argument. Try 'updateScript --help' for more info." >&2
+     exit 1
+fi
+
+update
+leave

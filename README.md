@@ -1,5 +1,6 @@
 # terminal stuff, dotfiles and scripts
 
+.zshrc
 .bashrc
 .vimrc
 

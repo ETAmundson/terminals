@@ -3,6 +3,7 @@
 .zshrc
 .bashrc
 .vimrc
+/etc/xdg/kitty/kitty.conf or .config/kitty/kitty.conf
 
 #scripts
 

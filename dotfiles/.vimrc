@@ -5,6 +5,9 @@
   set nocompatible               " Be iMproved
 "endif
 
+"this is for ale plugin, needs to be added before plugins are loaded
+let g:ale_disable_lsp = 1
+
 " Required:
 set runtimepath+=~/.vim/bundle/neobundle.vim/
 
@@ -16,12 +19,18 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-"NeoBundle 'neoclide/coc.nvim', {'branch': 'release'}
+NeoBundle 'dense-analysis/ale'
+"html colorscheme
+NeoBundle 'dikiaap/minimalist'
+"add Live Preview For Web Pages
+NeoBundle 'turbio/bracey.vim'
+NeoBundle 'jeetsukumaran/vim-pythonsense'
+NeoBundle 'neoclide/coc.nvim', 'release', { 'build': { 'others': 'git checkout release' } }
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 NeoBundle 'prettier/vim-prettier', { 'do': 'yarn install' }
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'tiagofumo/vim-nerdtree-syntax-highlight'
-
+NeoBundle 'frazrepo/vim-rainbow'
 NeoBundle 'gko/vim-coloresque'
 
 NeoBundle 'vim-airline/vim-airline'
@@ -81,6 +90,11 @@ let s:git_orange = 'F54D27'
 let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreeExtensionHighlightColor['css'] = s:blue " sets the color of css files to blue
 
+"let g:ale_set_highlights = 0
+
+let NERDTreeShowHidden=1
+let NERDTreeWinSize = 20
+
 let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange " sets the color for .gitignore files
 
@@ -89,6 +103,8 @@ let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets th
 
 let g:WebDevIconsDefaultFolderSymbolColor = s:beige " sets the color for folders that did not match any rule
 let g:WebDevIconsDefaultFileSymbolColor = s:blue " sets the color for files that did not match any rule
+
+au FileType c,cpp,cs,java,ts,py call rainbow#load()
 
 " for vim DevIcons
 set encoding=UTF-8
@@ -144,9 +160,25 @@ syntax on
     " highlighted search results
     set hlsearch
 
+"colorscheme (minimalist)
+"    set -t Co=256
+"    syntax on 
+"    colorscheme minimalist
+"colorscheme working with airline plugin
+"let g:airline_theme='minimalist-airline'
+"let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#enabled = 1
+
+colorscheme hybrid_reverse
+let g:airline_theme='hybrid'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+
+
 
 "================= HTML =============================
-autocmd FileType html colorscheme desertEx
+"autocmd FileType html colorscheme desertEx
 autocmd FileType html inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 
 autocmd FileType html inoremap ;! <!--  --><Esc>4hi
@@ -224,7 +256,7 @@ autocmd FileType html inoremap ;nav <nav><Esc>o<a href=""></a><Esc>o</nav><Space
 
 autocmd FileType html inoremap ;ob <object data="" width=" height=""></object><Space><++><Esc>FoT>i
 autocmd FileType html inoremap ;o <option></option><Space><++><Esc>FoT>i
-autocmd FileType html inoremap ;ol <ol><Esc>o<li></li><Esc>o<li></li><<Esc>oli></li><Esc>o<li></li><Esc>o<li></li><Esc>o<li></li><Esc>o</ol><Space><++><Esc>FoT>i
+autocmd FileType html inoremap ;ol <ol><Esc>o<li></li><Esc>o<li></li><Esc><oli></li><Esc>o<li></li><Esc>o<li></li><Esc>o<li></li><Esc>o</ol><Space><++><Esc>FoT>i
 autocmd FileType html inoremap ;opt <optgroup><Esc>o<option></option><Esc>o<option></option><Esc>o<option></option><Esc>o</optgroup><Space><++><Esc>FoT>i
 autocmd FileType html inoremap ;op <output></output><Space><++><Esc>FoT>i
 

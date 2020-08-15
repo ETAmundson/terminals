@@ -198,6 +198,12 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)               # Include hidden files.
 
+#for kitty terminal completion
+autoload -Uz compinit
+compinit
+#completion for kitty
+kitty + complete setup zsh | source /dev/stdin
+
 # Custom ZSH Binds
 bindkey '^ ' autosuggest-accept
 

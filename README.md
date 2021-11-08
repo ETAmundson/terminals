@@ -5,7 +5,7 @@
 .vimrc
 /etc/xdg/kitty/kitty.conf or .config/kitty/kitty.conf
 
-#scripts
+# bash/zsh scripts
 
   #updateScript
 
@@ -17,3 +17,11 @@
   #secondScript
        
        shows memory, disk usage, and uptime
+
+
+
+# powershell commands 
+  
+  # My first powershell commmand is a command that lets you search through all the files in a folder
+  # and all its children for a string. The output will be a list of all the files and the line numbers 
+  # in those files where the string was found. 

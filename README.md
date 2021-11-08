@@ -22,6 +22,8 @@
 
 # powershell commands 
   
-  # My first powershell commmand is a command that lets you search through all the files in a folder
-  # and all its children for a string. The output will be a list of all the files and the line numbers 
-  # in those files where the string was found. 
+  # My first powershell commmand
+   
+   A command that lets you search through all the files in a folder
+   and all its children for a string. The output will be a list of all the files and the line numbers 
+   in those files where the string was found. 

@@ -1,0 +1,2 @@
+
+This is just a simple file to test clickup's automation that I made to remind me to pull the master branch

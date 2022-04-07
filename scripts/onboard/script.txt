@@ -1,0 +1,18 @@
+set theResponse to display dialog "Welcome to Ascend! Please enter your Ascend email" default answer "" with icon note buttons {"Cancel", "Continue"} default button "Continue"
+--> {button returned:"Continue", text returned:"Jen"}
+set theText to text returned of theResponse
+
+set theResponse2 to display dialog "Welcome to Ascend! Please enter your Lastpass masterpassword" default answer "" with icon note buttons {"Cancel", "Continue"} default button "Continue"
+--> {button returned:"Continue", text returned:"Jen"}
+set theText2 to text returned of theResponse2
+
+display dialog "Hello, " & (text returned of theResponse) & "."
+display dialog "Hello, " & (text returned of theResponse2) & "."
+
+set theFruitChoices to {"Developer", "Designer", "Marketer"}
+set theFavoriteFruit to choose from list theFruitChoices with prompt "Select your favorite fruit:" default items {"Developer"}
+theFavoriteFruit
+--> Result: {"Developer"}
+
+
+do shell script "bash ~/Documents/installs.sh " & theFavoriteFruit & " " & theText & " " & theText2
